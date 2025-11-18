@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:jombang/controllers/menu_controller.dart';
-import 'package:jombang/utils/colors.dart';
-import 'package:jombang/utils/containers/box_container.dart';
-import 'package:jombang/utils/sizes.dart';
+import 'package:surabaya/controllers/menu_controller.dart';
+import 'package:surabaya/utils/colors.dart';
+import 'package:surabaya/utils/containers/box_container.dart';
+import 'package:surabaya/utils/sizes.dart';
 
 class Menu extends StatelessWidget {
   Menu({super.key});
@@ -35,18 +35,18 @@ class Menu extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    if (menuController.menuItem[index].directlink! ==
-                        '/pendaftaran') {
-                      final isLogin =
-                          menuController.prefs.getBool('statusLogin');
-                      if (isLogin == true) {
-                        Get.toNamed(menuController.menuItem[index].directlink!);
-                      } else {
-                        Get.toNamed('/login');
-                      }
-                    } else {
-                      Get.toNamed(menuController.menuItem[index].directlink!);
-                    }
+                    // if (menuController.menuItem[index].directlink! ==
+                    //     '/pendaftaran') {
+                    //   final isLogin =
+                    //       menuController.prefs.getBool('statusLogin');
+                    //   if (isLogin == true) {
+                    //     Get.toNamed(menuController.menuItem[index].directlink!);
+                    //   } else {
+                    //     Get.toNamed('/login');
+                    //   }
+                    // } else {
+                    Get.toNamed(menuController.menuItem[index].directlink!);
+                    // }
                   },
                   child: Column(
                     children: [

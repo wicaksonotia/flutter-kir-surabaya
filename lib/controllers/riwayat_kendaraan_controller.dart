@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jombang/controllers/search_bar_controller.dart';
-import 'package:jombang/models/riwayat_model.dart';
-import 'package:jombang/networks/api_request.dart';
+import 'package:surabaya/controllers/search_bar_controller.dart';
+import 'package:surabaya/models/riwayat_model.dart';
+import 'package:surabaya/networks/api_request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RiwayatKendaraanController extends GetxController {

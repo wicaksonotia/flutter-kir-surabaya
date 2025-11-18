@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jombang/bindings/initial_binding.dart';
-import 'package:jombang/pages/app_navigation_getmaterial.dart';
+import 'package:surabaya/bindings/initial_binding.dart';
+import 'package:surabaya/pages/app_navigation_getmaterial.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {

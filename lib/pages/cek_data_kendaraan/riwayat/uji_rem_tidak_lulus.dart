@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jombang/controllers/detail_riwayat_controller.dart';
-import 'package:jombang/pages/cek_data_kendaraan/text_left.dart';
+import 'package:surabaya/controllers/detail_riwayat_controller.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
 
 class RemTidakLulus extends StatelessWidget {
   const RemTidakLulus({

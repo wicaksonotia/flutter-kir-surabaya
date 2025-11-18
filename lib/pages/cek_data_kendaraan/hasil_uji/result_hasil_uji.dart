@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:jombang/controllers/hasil_uji_controller.dart';
-import 'package:jombang/pages/cek_data_kendaraan/text_header.dart';
-import 'package:jombang/pages/cek_data_kendaraan/text_left.dart';
-import 'package:jombang/pages/cek_data_kendaraan/text_right.dart';
-import 'package:jombang/utils/containers/box_container.dart';
-import 'package:jombang/utils/sizes.dart';
+import 'package:surabaya/controllers/hasil_uji_controller.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/text_header.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
+import 'package:surabaya/utils/containers/box_container.dart';
+import 'package:surabaya/utils/sizes.dart';
 
 class ResultHasilUji extends StatelessWidget {
   const ResultHasilUji({super.key});

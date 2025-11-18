@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:jombang/controllers/detail_persyaratan_controller.dart';
-import 'package:jombang/controllers/jenis_uji_controller.dart';
-import 'package:jombang/utils/containers/box_container.dart';
-import 'package:jombang/utils/sizes.dart';
+import 'package:surabaya/controllers/detail_persyaratan_controller.dart';
+import 'package:surabaya/controllers/jenis_uji_controller.dart';
+import 'package:surabaya/utils/containers/box_container.dart';
+import 'package:surabaya/utils/sizes.dart';
 
 class CardCategories extends StatelessWidget {
   CardCategories({

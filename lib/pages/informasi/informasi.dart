@@ -6,12 +6,12 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:jombang/controllers/berita_controller.dart';
-import 'package:jombang/utils/containers/app_bar_header.dart';
-import 'package:jombang/pages/persyaratan/background_header.dart';
-import 'package:jombang/utils/colors.dart';
-import 'package:jombang/utils/containers/box_container.dart';
-import 'package:jombang/utils/sizes.dart';
+import 'package:surabaya/controllers/berita_controller.dart';
+import 'package:surabaya/utils/containers/app_bar_header.dart';
+import 'package:surabaya/pages/persyaratan/background_header.dart';
+import 'package:surabaya/utils/colors.dart';
+import 'package:surabaya/utils/containers/box_container.dart';
+import 'package:surabaya/utils/sizes.dart';
 
 class InformasiPage extends StatefulWidget {
   const InformasiPage({super.key});

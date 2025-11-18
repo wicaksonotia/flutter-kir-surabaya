@@ -5,15 +5,15 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
-import 'package:jombang/controllers/pendaftaran_controller.dart';
-import 'package:jombang/pages/cek_data_kendaraan/text_header.dart';
-import 'package:jombang/pages/cek_data_kendaraan/text_left.dart';
-import 'package:jombang/pages/cek_data_kendaraan/text_right.dart';
-import 'package:jombang/pages/pendaftaran/loading_button.dart';
-import 'package:jombang/pages/persyaratan/background_header.dart';
-import 'package:jombang/utils/colors.dart';
-import 'package:jombang/utils/containers/app_bar_header.dart';
-import 'package:jombang/utils/containers/box_container.dart';
+import 'package:surabaya/controllers/pendaftaran_controller.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/text_header.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
+import 'package:surabaya/pages/pendaftaran/loading_button.dart';
+import 'package:surabaya/pages/persyaratan/background_header.dart';
+import 'package:surabaya/utils/colors.dart';
+import 'package:surabaya/utils/containers/app_bar_header.dart';
+import 'package:surabaya/utils/containers/box_container.dart';
 
 class PendaftaranPage extends StatefulWidget {
   const PendaftaranPage({super.key});
