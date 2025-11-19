@@ -6,8 +6,7 @@ import 'package:surabaya/networks/api_request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RiwayatPendaftaranController extends GetxController {
-  final searchTextFieldController =
-      Get.find<SearchBarController>().searchTextFieldController;
+  final searchTextFieldController = Get.find<SearchBarController>();
   var isLoadingListRetribusi = false.obs;
   var resultDataListRetribusi = <DataRetribusi>[].obs;
   String? valueSearch = '';
@@ -20,7 +19,8 @@ class RiwayatPendaftaranController extends GetxController {
   }
 
   void getDataRiwayatRetribusi() async {
-    valueSearch = searchTextFieldController.text.toString();
+    valueSearch =
+        "${searchTextFieldController.searchTextFieldNoUjiController.text}/${searchTextFieldController.searchTextFieldNoRangkaController.text}";
     getData(valueSearch);
   }
 

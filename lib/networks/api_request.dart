@@ -108,12 +108,11 @@ class RemoteDataSource {
   }
 
   // DETAIL PERSYARATAN
-  static Future<List<PersyaratanModel>?> getDetailPersyaratan(
-      String jenisUji) async {
+  static Future<List<PersyaratanModel>?> getDetailPersyaratan(int id) async {
     try {
       var url =
           ApiEndPoints.baseUrl + ApiEndPoints.authEndpoints.detailpersyaratan;
-      final response = await Dio().get("$url?nama=$jenisUji");
+      final response = await Dio().get("$url?id=$id");
       if (response.statusCode == 200) {
         List<dynamic> jsonData = response.data;
         return jsonData.map((e) => PersyaratanModel.fromJson(e)).toList();

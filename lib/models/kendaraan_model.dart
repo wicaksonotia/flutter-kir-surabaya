@@ -25,6 +25,7 @@ class DetailKendaraanModel {
 }
 
 class DataDetailKendaraan {
+  String? noSrut;
   String? noUji;
   String? noKendaraan;
   String? merk;
@@ -54,6 +55,12 @@ class DataDetailKendaraan {
   String? totalSb;
   String? jbi;
   String? mst;
+  String? roh;
+  String? foh;
+  String? jarakSumbu1;
+  String? jarakSumbu2;
+  String? jarakSumbu3;
+  String? jarakSumbu4;
   String? kondisi;
   String? imgDepan;
   String? imgBelakang;
@@ -61,7 +68,8 @@ class DataDetailKendaraan {
   String? imgKiri;
 
   DataDetailKendaraan(
-      {this.noUji,
+      {this.noSrut,
+      this.noUji,
       this.noKendaraan,
       this.merk,
       this.tipe,
@@ -90,6 +98,12 @@ class DataDetailKendaraan {
       this.totalSb,
       this.jbi,
       this.mst,
+      this.roh,
+      this.foh,
+      this.jarakSumbu1,
+      this.jarakSumbu2,
+      this.jarakSumbu3,
+      this.jarakSumbu4,
       this.kondisi,
       this.imgDepan,
       this.imgBelakang,
@@ -97,6 +111,7 @@ class DataDetailKendaraan {
       this.imgKiri});
 
   DataDetailKendaraan.fromJson(Map<String, dynamic> json) {
+    noSrut = json['no_srut'];
     noUji = json['no_uji'];
     noKendaraan = json['no_kendaraan'];
     merk = json['merk'];
@@ -126,6 +141,12 @@ class DataDetailKendaraan {
     totalSb = json['total_sb'];
     jbi = json['jbi'];
     mst = json['mst'];
+    roh = json['roh'];
+    foh = json['foh'];
+    jarakSumbu1 = json['jarak_sumbu_1'];
+    jarakSumbu2 = json['jarak_sumbu_2'];
+    jarakSumbu3 = json['jarak_sumbu_3'];
+    jarakSumbu4 = json['jarak_sumbu_4'];
     kondisi = json['kondisi'];
     imgDepan = json['img_depan'];
     imgBelakang = json['img_belakang'];
@@ -135,6 +156,7 @@ class DataDetailKendaraan {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['no_srut'] = noSrut;
     data['no_uji'] = noUji;
     data['no_kendaraan'] = noKendaraan;
     data['merk'] = merk;
@@ -164,6 +186,12 @@ class DataDetailKendaraan {
     data['total_sb'] = totalSb;
     data['jbi'] = jbi;
     data['mst'] = mst;
+    data['roh'] = roh;
+    data['foh'] = foh;
+    data['jarak_sumbu_1'] = jarakSumbu1;
+    data['jarak_sumbu_2'] = jarakSumbu2;
+    data['jarak_sumbu_3'] = jarakSumbu3;
+    data['jarak_sumbu_4'] = jarakSumbu4;
     data['kondisi'] = kondisi;
     data['img_depan'] = imgDepan;
     data['img_belakang'] = imgBelakang;

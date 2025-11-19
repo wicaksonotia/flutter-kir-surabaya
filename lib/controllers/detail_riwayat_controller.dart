@@ -31,16 +31,8 @@ class DetailRiwayatController extends GetxController {
       keteranganTlLampu.assignAll(resultTlLampu!.data!);
 
       var resultTlRem =
-          await RemoteDataSource.getKeteranganTidakLulus(idhasiluji, 'REM');
+          await RemoteDataSource.getKeteranganTidakLulus(idhasiluji, 'BREAK');
       keteranganTlRem.assignAll(resultTlRem!.data!);
-      // print(resultData.value.toJson());
-      // print(result?.toJson());
-      // if (result?.status == 'ok') {
-      // resultData.value = result!.data!;
-      // print(resultData.value.toJson());
-      // } else if (result?.status == 'error') {
-      // print('error');
-      // }
     } catch (error) {
       Get.snackbar('Notification', 'Data kendaraan belum terdaftar',
           icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);

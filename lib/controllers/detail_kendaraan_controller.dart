@@ -6,8 +6,7 @@ import 'package:surabaya/networks/api_request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class DetailKendaraanController extends GetxController {
-  final searchTextFieldController =
-      Get.find<SearchBarController>().searchTextFieldController;
+  final searchTextFieldController = Get.find<SearchBarController>();
   var isLoadingDetailKendaraan = false.obs;
   var resultData = DataDetailKendaraan().obs;
   String? valueSearch = '';
@@ -20,7 +19,8 @@ class DetailKendaraanController extends GetxController {
   }
 
   void getDetailDataKendaraan() async {
-    valueSearch = searchTextFieldController.text.toString();
+    valueSearch =
+        "${searchTextFieldController.searchTextFieldNoUjiController.text}/${searchTextFieldController.searchTextFieldNoRangkaController.text}";
     getData(valueSearch);
   }
 
@@ -36,7 +36,7 @@ class DetailKendaraanController extends GetxController {
             icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
       }
     } catch (error) {
-      Get.snackbar('Error', "Silakan cek koneksi internet anda.",
+      Get.snackbar('Error', "Data kendaraan belum terdaftar.",
           icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
       isLoadingDetailKendaraan(false);
     } finally {

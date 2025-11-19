@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:surabaya/controllers/detail_riwayat_controller.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
-import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
 
 class Rem extends StatelessWidget {
-  const Rem({
+  Rem({
     super.key,
     required this.controller,
   });
@@ -13,9 +12,9 @@ class Rem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Row(
+        Row(
           children: [
             TextLeft(nama: 'Rem'),
             Spacer(),
@@ -23,122 +22,114 @@ class Rem extends StatelessWidget {
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Gaya Pengereman Sumbu I'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selgaya1!.isEmpty
-                  ? '0 Kg'
-                  : '${controller.resultData.value.selgaya1} Kg',
-            )
+            TextLeft(nama: 'Gaya Pengereman Sumbu I'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Selisih Gaya Pengereman Sumbu I'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selremSb1!.isEmpty
-                  ? '0 %'
-                  : '${controller.resultData.value.selremSb1} %',
-            )
+            TextLeft(nama: 'Selisih Gaya Pengereman Sumbu I'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Gaya Pengereman Sumbu II'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selgaya2!.isEmpty
-                  ? '0 Kg'
-                  : '${controller.resultData.value.selgaya2} Kg',
-            )
+            TextLeft(nama: 'Gaya Pengereman Sumbu II'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Selisih Gaya Pengereman Sumbu II'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selremSb2!.isEmpty
-                  ? '0 %'
-                  : '${controller.resultData.value.selremSb2} %',
-            )
+            TextLeft(nama: 'Selisih Gaya Pengereman Sumbu II'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Gaya Pengereman Sumbu III'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selgaya3!.isEmpty
-                  ? '0 Kg'
-                  : '${controller.resultData.value.selgaya3} Kg',
-            )
+            TextLeft(nama: 'Gaya Pengereman Sumbu III'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Selisih Gaya Pengereman Sumbu III'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selremSb3!.isEmpty
-                  ? '0 %'
-                  : '${controller.resultData.value.selremSb3} %',
-            )
+            TextLeft(nama: 'Selisih Gaya Pengereman Sumbu III'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Gaya Pengereman Sumbu IV'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selgaya4!.isEmpty
-                  ? '0 Kg'
-                  : '${controller.resultData.value.selgaya4} Kg',
-            )
+            TextLeft(nama: 'Gaya Pengereman Sumbu IV'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Selisih Gaya Pengereman Sumbu III'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.selremSb4!.isEmpty
-                  ? '0 %'
-                  : '${controller.resultData.value.selremSb4} %',
-            )
+            TextLeft(nama: 'Selisih Gaya Pengereman Sumbu III'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
       ],

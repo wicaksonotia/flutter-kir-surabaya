@@ -25,13 +25,10 @@ class CardCategories extends StatelessWidget {
     return Obx(
       () => InkWell(
         onTap: () {
-          // context.goNamed('detailpersyaratan', queryParameters: {
-          //   'nama': jenisUjiController.jenisUjiItem[index].nama
-          // });
           detailPersyaratanController.persyaratanHeader.value =
               jenisUjiController.jenisUjiItem[index].nama!;
           detailPersyaratanController
-              .fetchData(jenisUjiController.jenisUjiItem[index].nama!);
+              .fetchData(jenisUjiController.jenisUjiItem[index].id);
           Get.toNamed('/detailpersyaratan');
         },
         child: BoxContainer(

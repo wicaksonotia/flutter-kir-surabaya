@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:surabaya/controllers/detail_riwayat_controller.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
-import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
 
 class Prauji extends StatelessWidget {
   const Prauji({
@@ -29,9 +28,10 @@ class Prauji extends StatelessWidget {
             ),
             TextLeft(nama: 'Identitas Kendaraan'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -42,9 +42,10 @@ class Prauji extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Penerangan'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -55,9 +56,10 @@ class Prauji extends StatelessWidget {
             ),
             TextLeft(nama: 'Rumah dan Body'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -68,9 +70,10 @@ class Prauji extends StatelessWidget {
             ),
             TextLeft(nama: 'Roda-roda'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -81,9 +84,10 @@ class Prauji extends StatelessWidget {
             ),
             TextLeft(nama: 'Dimensi'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -94,9 +98,10 @@ class Prauji extends StatelessWidget {
             ),
             TextLeft(nama: 'Peralatan dan Perlengkapan'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
       ],

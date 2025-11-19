@@ -13,8 +13,11 @@ class TextRight extends StatelessWidget {
     return Text(
       nama,
       textAlign: TextAlign.right,
-      style:
-          TextStyle(color: nama == 'TIDAK LULUS' ? Colors.red : Colors.black),
+      softWrap: true,
+      maxLines: null,
+      style: TextStyle(
+        color: nama == 'TIDAK LULUS' ? Colors.red : Colors.black,
+      ),
     );
   }
 }

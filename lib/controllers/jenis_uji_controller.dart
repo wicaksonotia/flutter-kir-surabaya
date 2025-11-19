@@ -12,7 +12,6 @@ class JenisUjiController extends GetxController {
   @override
   void onInit() {
     fetchData();
-    fetchDataDetailPersyaratan();
     super.onInit();
   }
 
@@ -22,18 +21,6 @@ class JenisUjiController extends GetxController {
       var result = await RemoteDataSource.getJenisUji();
       if (result != null) {
         jenisUjiItem.assignAll(result);
-      }
-    } finally {
-      isLoading(false);
-    }
-  }
-
-  void fetchDataDetailPersyaratan() async {
-    try {
-      isLoading(true);
-      var result = await RemoteDataSource.getDetailPersyaratan(jenisUji.value);
-      if (result != null) {
-        persyaratan.assignAll(result);
       }
     } finally {
       isLoading(false);

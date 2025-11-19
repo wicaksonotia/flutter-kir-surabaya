@@ -4,8 +4,6 @@ import 'package:surabaya/controllers/detail_kendaraan_controller.dart';
 import 'package:surabaya/controllers/hasil_uji_controller.dart';
 import 'package:surabaya/controllers/riwayat_kendaraan_controller.dart';
 import 'package:surabaya/controllers/riwayat_pendaftaran_controller.dart';
-import 'package:surabaya/utils/colors.dart';
-import 'package:surabaya/utils/widgets/text_field_widget.dart';
 import 'package:surabaya/controllers/search_bar_controller.dart';
 
 class SearchBarContainer extends StatelessWidget {
@@ -23,70 +21,83 @@ class SearchBarContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Row(
-        children: [
-          // TEXT FIELD SEARCH
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 2,
-                    blurRadius: 7,
-                  ),
-                ],
-              ),
-              child: TextFieldWidget(
-                hint: "Ketik No Uji untuk cek data",
-                prefixIcon: Icons.search,
-                controller: searchBarController.searchTextFieldController,
-                filled: true,
-                suffixIcon:
-                    searchBarController.isEmptyValue.value ? null : Icons.clear,
-                onTapSuffixIcon: () {
-                  searchBarController.searchTextFieldController.clear();
-                  searchBarController.isEmptyValue.value = true;
-                },
-                onChanged: (value) {
-                  value.isEmpty
-                      ? searchBarController.isEmptyValue.value = true
-                      : searchBarController.isEmptyValue.value = false;
-                },
-              ),
-            ),
-          ),
-
-          Container(
-            height: 50,
-            width: 50,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(10),
-                bottomRight: Radius.circular(10),
-              ),
-              color: MyColors.orange,
-            ),
-            child: IconButton(
-              onPressed: () {
-                if (menu == 'cekdata') {
-                  detailKendaraanController.getDetailDataKendaraan();
-                }
-                if (menu == 'hasiluji') {
-                  hasilUjiController.getHasilUjiKendaraan();
-                }
-                if (menu == 'riwayat') {
-                  riwayatKendaraanController.getDataRiwayat();
-                  riwayatPendaftaranController.getDataRiwayatRetribusi();
-                }
-              },
-              icon: const Icon(Icons.search),
+    return Row(
+      children: [
+        Expanded(
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+            decoration: BoxDecoration(
               color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 5,
+                  offset: Offset(0, 2),
+                )
+              ],
+            ),
+            child: Row(
+              children: [
+                const Icon(Icons.search, color: Colors.grey),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TextField(
+                    controller:
+                        searchBarController.searchTextFieldNoUjiController,
+                    decoration: InputDecoration(
+                      hintText: "SB 123456 K",
+                      hintStyle: TextStyle(color: Colors.grey[400]),
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 6),
+                  child: Text(
+                    "/",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Expanded(
+                  child: TextField(
+                    controller:
+                        searchBarController.searchTextFieldNoRangkaController,
+                    decoration: InputDecoration(
+                      hintText: "17109",
+                      hintStyle: TextStyle(color: Colors.grey[400]),
+                      border: InputBorder.none,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 40,
+                  width: 45,
+                  decoration: BoxDecoration(
+                    color: Colors.orange,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      if (menu == 'cekdata') {
+                        detailKendaraanController.getDetailDataKendaraan();
+                      }
+                      if (menu == 'hasiluji') {
+                        hasilUjiController.getHasilUjiKendaraan();
+                      }
+                      if (menu == 'riwayat') {
+                        riwayatKendaraanController.getDataRiwayat();
+                      }
+                    },
+                    icon: const Icon(Icons.search),
+                    color: Colors.white,
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

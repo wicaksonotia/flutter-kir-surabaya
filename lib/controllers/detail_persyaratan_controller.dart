@@ -7,10 +7,10 @@ class DetailPersyaratanController extends GetxController {
   var isLoading = true.obs;
   RxString persyaratanHeader = 'UJI PERTAMA'.obs;
 
-  void fetchData(jenisUji) async {
+  void fetchData(id) async {
     try {
       isLoading(true);
-      var result = await RemoteDataSource.getDetailPersyaratan(jenisUji);
+      var result = await RemoteDataSource.getDetailPersyaratan(id);
       if (result != null) {
         persyaratanItem.assignAll(result);
       }

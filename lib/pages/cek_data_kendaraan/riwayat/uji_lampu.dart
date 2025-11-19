@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:surabaya/controllers/detail_riwayat_controller.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
-import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
 
 class Lampu extends StatelessWidget {
   const Lampu({
@@ -13,9 +12,9 @@ class Lampu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Row(
+        Row(
           children: [
             TextLeft(nama: 'Lampu'),
             Spacer(),
@@ -23,62 +22,58 @@ class Lampu extends StatelessWidget {
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Kuat Pancar Lampu Utama Kanan'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.ktlampKanan!.isEmpty
-                  ? '0 cd'
-                  : '${controller.resultData.value.ktlampKanan} cd',
-            )
+            TextLeft(nama: 'Kuat Pancar Lampu Utama Kanan'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Sudut Penyimpangan Kanan'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.devKanan!.isEmpty
-                  ? '0 degree'
-                  : '${controller.resultData.value.devKanan} degree',
-            )
+            TextLeft(nama: 'Sudut Penyimpangan Kanan'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Kuat Pancar Lampu Utama Kiri'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.ktlampKiri!.isEmpty
-                  ? '0 cd'
-                  : '${controller.resultData.value.ktlampKiri} cd',
-            )
+            TextLeft(nama: 'Kuat Pancar Lampu Utama Kiri'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Sudut Penyimpangan Kiri'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.devKiri!.isEmpty
-                  ? '0 degree'
-                  : '${controller.resultData.value.devKiri} degree',
-            )
+            TextLeft(nama: 'Sudut Penyimpangan Kiri'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
       ],

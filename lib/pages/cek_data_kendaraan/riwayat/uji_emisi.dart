@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:surabaya/controllers/detail_riwayat_controller.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
-import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
 
 class Emisi extends StatelessWidget {
   const Emisi({
@@ -13,9 +12,9 @@ class Emisi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const Row(
+        Row(
           children: [
             TextLeft(nama: 'Emisi'),
             Spacer(),
@@ -23,47 +22,44 @@ class Emisi extends StatelessWidget {
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Diesel'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.emsDiesel!.isEmpty
-                  ? '-'
-                  : '${controller.resultData.value.emsDiesel} %',
-            )
+            TextLeft(nama: 'Diesel'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Mesin HC'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.emsMesinHc!.isEmpty
-                  ? '0 ppm'
-                  : '${controller.resultData.value.emsMesinHc} ppm',
-            )
+            TextLeft(nama: 'Mesin HC'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
           children: [
-            const Icon(
+            Icon(
               Icons.arrow_right,
               color: Colors.grey,
             ),
-            const TextLeft(nama: 'Mesin CO'),
-            const Spacer(),
-            TextRight(
-              nama: controller.resultData.value.emsMesinCo!.isEmpty
-                  ? '0 ppm'
-                  : '${controller.resultData.value.emsMesinCo} ppm',
-            )
+            TextLeft(nama: 'Mesin CO'),
+            Spacer(),
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
       ],

@@ -90,10 +90,10 @@ class TextFieldWidget extends StatelessWidget {
           //   borderSide: const BorderSide(color: Colors.red),
           // ),
           hintText: hint,
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             fontFamily: "Inter",
             fontSize: 16,
-            fontWeight: FontWeight.w500,
+            color: Colors.grey.shade400,
           ),
           prefixIcon: Icon(
             prefixIcon,

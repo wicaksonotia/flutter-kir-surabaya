@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/search_bar_container.dart';
 import 'package:surabaya/utils/colors.dart';
 
@@ -52,10 +53,20 @@ class BackgroundHeader extends StatelessWidget {
         // HEADER dan MENU
         Container(
           // color: Colors.red,
-          margin: const EdgeInsets.only(top: 100, bottom: 10),
+          margin: const EdgeInsets.only(top: 75, bottom: 10),
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: SearchBarContainer(
-            menu: menu,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                '*NO UJI dan 5 digit terakhir NO RANGKA',
+                style: TextStyle(color: Colors.white, fontSize: 12),
+              ),
+              const Gap(5),
+              SearchBarContainer(
+                menu: menu,
+              ),
+            ],
           ),
         ),
       ],

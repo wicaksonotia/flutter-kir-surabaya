@@ -7,8 +7,7 @@ import 'package:surabaya/networks/api_request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HasilUjiController extends GetxController {
-  final searchTextFieldController =
-      Get.find<SearchBarController>().searchTextFieldController;
+  final searchTextFieldController = Get.find<SearchBarController>();
   var isLoadingHasilUji = false.obs;
   var resultDataHasilUji = DataHasilUji().obs;
   RxInt idHasilUji = 0.obs;
@@ -24,7 +23,8 @@ class HasilUjiController extends GetxController {
   }
 
   void getHasilUjiKendaraan() async {
-    valueSearch = searchTextFieldController.text.toString();
+    valueSearch =
+        "${searchTextFieldController.searchTextFieldNoUjiController.text}/${searchTextFieldController.searchTextFieldNoRangkaController.text}";
     getData(valueSearch);
   }
 

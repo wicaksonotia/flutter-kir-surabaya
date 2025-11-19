@@ -30,19 +30,19 @@ class Pendaftaran extends StatelessWidget {
           const Gap(10),
           Row(
             children: [
-              const TextLeft(nama: 'Tanggal Daftar'),
+              const TextLeft(nama: 'Tanggal Uji'),
               const Spacer(),
               TextRight(
-                nama: controller.resultData.value.tglRetribusi ?? '-',
+                nama: controller.resultData.value.tglUji ?? '-',
               )
             ],
           ),
           Row(
             children: [
-              const TextLeft(nama: 'Tanggal Uji'),
+              const TextLeft(nama: 'Tanggal Mati Uji'),
               const Spacer(),
               TextRight(
-                nama: controller.resultData.value.tglUji ?? '-',
+                nama: controller.resultData.value.tglmati ?? '-',
               )
             ],
           ),

@@ -3,6 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:surabaya/controllers/riwayat_kendaraan_controller.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/riwayat/card_riwayat.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/riwayat/shimmer_riwayat.dart';
 
 class ResultRiwayat extends StatelessWidget {
   ResultRiwayat({super.key});
@@ -13,12 +14,7 @@ class ResultRiwayat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => riwayatKendaraanController.isLoadingRiwayat.value
-          ? Container(
-              margin: const EdgeInsets.only(top: 10),
-              child: const Center(
-                child: CircularProgressIndicator(),
-              ),
-            )
+          ? const ShimmerRiwayat()
           : Padding(
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: AnimationLimiter(

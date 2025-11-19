@@ -6,9 +6,8 @@ import 'package:surabaya/networks/api_request.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RiwayatKendaraanController extends GetxController {
-  final searchTextFieldController =
-      Get.find<SearchBarController>().searchTextFieldController;
-  var isLoadingRiwayat = false.obs;
+  final searchTextFieldController = Get.find<SearchBarController>();
+  var isLoadingRiwayat = true.obs;
   var resultData = <DataRiwayat>[].obs;
   var responseMessage = 'error'.obs;
   String? valueSearch = '';
@@ -21,19 +20,24 @@ class RiwayatKendaraanController extends GetxController {
   }
 
   void getDataRiwayat() async {
-    valueSearch = searchTextFieldController.text.toString();
+    valueSearch =
+        "${searchTextFieldController.searchTextFieldNoUjiController.text}/${searchTextFieldController.searchTextFieldNoRangkaController.text}";
     getData(valueSearch);
   }
 
   void getData(valueSearch) async {
     try {
-      isLoadingRiwayat(true);
-      // String valueSearch = 'CD021016982';
       var result = await RemoteDataSource.getRiwayatKendaraan(valueSearch!);
-      responseMessage.value = result!.status!;
-      resultData.assignAll(result.data!);
+      if (result!.status! == 'ok') {
+        resultData.assignAll(result.data!);
+      } else {
+        Get.snackbar('Notification', 'Data kendaraan belum terdaftar.',
+            icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
+      }
+      // responseMessage.value = result!.status!;
+      // resultData.assignAll(result.data!);
     } catch (error) {
-      Get.snackbar('Error', "Silakan cek koneksi internet anda.",
+      Get.snackbar('Error', "Data kendaraan belum terdaftar.",
           icon: const Icon(Icons.error), snackPosition: SnackPosition.BOTTOM);
       isLoadingRiwayat(false);
     } finally {

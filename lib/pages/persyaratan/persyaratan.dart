@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:surabaya/controllers/jenis_uji_controller.dart';
+import 'package:surabaya/pages/persyaratan/shimmer_persyaratan.dart';
 import 'package:surabaya/utils/containers/app_bar_header.dart';
 import 'package:surabaya/pages/persyaratan/background_header.dart';
 import 'package:surabaya/pages/persyaratan/card_categories.dart';
@@ -19,8 +20,8 @@ class _PersyaratanPageState extends State<PersyaratanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(50),
         child: AppbarHeader(
           header: 'Persyaratan Uji Kendaraan',
         ),
@@ -36,12 +37,7 @@ class _PersyaratanPageState extends State<PersyaratanPage> {
               height: MediaQuery.of(context).size.height * .79,
               child: Obx(
                 () => jenisUjiController.isLoading.value
-                    ? Container(
-                        margin: const EdgeInsets.only(top: 10),
-                        child: const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                      )
+                    ? const ShimmerPersyaratan()
                     : Padding(
                         padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                         child: AnimationLimiter(
@@ -67,41 +63,6 @@ class _PersyaratanPageState extends State<PersyaratanPage> {
                           ),
                         ),
                       ),
-                //     AnimationLimiter(
-                //   child: GridView.count(
-                //     crossAxisCount: 3,
-                //     children: List.generate(
-                //       100,
-                //       (int index) {
-                //         return AnimationConfiguration.staggeredGrid(
-                //           position: index,
-                //           duration: const Duration(milliseconds: 375),
-                //           columnCount: 3,
-                //           child: ScaleAnimation(
-                //             child: FadeInAnimation(
-                //               child: Padding(
-                //                 padding: const EdgeInsets.all(8.0),
-                //                 child: Container(
-                //                   height: 200,
-                //                   width: 200,
-                //                   color: Colors.deepOrange,
-                //                   child: const Center(
-                //                     child: Text(
-                //                       "HAIIII",
-                //                       style: TextStyle(
-                //                           fontWeight: FontWeight.w800,
-                //                           color: Colors.white),
-                //                     ),
-                //                   ),
-                //                 ),
-                //               ),
-                //             ),
-                //           ),
-                //         );
-                //       },
-                //     ),
-                //   ),
-                // ),
               ),
             ),
           ],

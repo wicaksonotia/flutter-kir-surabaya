@@ -1,13 +1,13 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:surabaya/controllers/detail_kendaraan_controller.dart';
+// import 'package:surabaya/pages/cek_data_kendaraan/cek_data/foto_kendaraan.dart';
+import 'package:surabaya/pages/cek_data_kendaraan/cek_data/shimmer_detail_kendaraan.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_header.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
 import 'package:surabaya/utils/containers/box_container.dart';
-import 'package:surabaya/utils/sizes.dart';
 
 class ResultCekData extends StatelessWidget {
   const ResultCekData({super.key});
@@ -19,12 +19,7 @@ class ResultCekData extends StatelessWidget {
 
     return Obx(() {
       if (controller.isLoadingDetailKendaraan.value) {
-        return Container(
-          margin: const EdgeInsets.only(top: 10),
-          child: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
+        return const ShimmerDetailKendaraan();
       } else {
         return SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -47,6 +42,15 @@ class ResultCekData extends StatelessWidget {
                     const Gap(10),
                     Row(
                       children: [
+                        const TextLeft(nama: 'No SRUT'),
+                        const Spacer(),
+                        TextRight(
+                          nama: controller.resultData.value.noSrut ?? '-',
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
                         const TextLeft(nama: 'No Uji'),
                         const Spacer(),
                         TextRight(
@@ -64,30 +68,17 @@ class ResultCekData extends StatelessWidget {
                       ],
                     ),
                     Row(
-                      children: [
-                        const TextLeft(nama: 'Nama Pemilik'),
-                        const Spacer(),
-                        TextRight(
-                          nama: controller.resultData.value.pemilik ?? '-',
-                        )
-                      ],
-                    ),
-                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const TextLeft(nama: 'Jenis Kendaraan'),
                         const Spacer(),
-                        TextRight(
-                          nama: controller.resultData.value.jnsKend ?? '-',
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const TextLeft(nama: 'Nama Komersil'),
-                        const Spacer(),
-                        TextRight(
-                          nama: controller.resultData.value.namaKomersil ?? '-',
-                        )
+                        SizedBox(
+                          width: 200,
+                          child: TextRight(
+                            nama:
+                                controller.resultData.value.namaKomersil ?? '-',
+                          ),
+                        ),
                       ],
                     ),
                     Row(
@@ -173,6 +164,64 @@ class ResultCekData extends StatelessWidget {
                         )
                       ],
                     ),
+                    Row(
+                      children: [
+                        const TextLeft(nama: 'ROH'),
+                        const Spacer(),
+                        TextRight(
+                          nama: controller.resultData.value.roh ?? '-',
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const TextLeft(nama: 'FOH'),
+                        const Spacer(),
+                        TextRight(
+                          nama: controller.resultData.value.foh ?? '-',
+                        )
+                      ],
+                    ),
+                    const Gap(10),
+                    const TextHeader(
+                      nama: 'Jarak Sumbu',
+                    ),
+                    Row(
+                      children: [
+                        const TextLeft(nama: 'I-II'),
+                        const Spacer(),
+                        TextRight(
+                          nama: controller.resultData.value.jarakSumbu1 ?? '-',
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const TextLeft(nama: 'II-III'),
+                        const Spacer(),
+                        TextRight(
+                          nama: controller.resultData.value.jarakSumbu2 ?? '-',
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const TextLeft(nama: 'III-IV'),
+                        const Spacer(),
+                        TextRight(
+                          nama: controller.resultData.value.jarakSumbu3 ?? '-',
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        const TextLeft(nama: 'IV-V'),
+                        const Spacer(),
+                        TextRight(
+                          nama: controller.resultData.value.jarakSumbu4 ?? '-',
+                        )
+                      ],
+                    ),
                     const Gap(10),
                     const TextHeader(
                       nama: 'Dimensi Bak Muatan',
@@ -212,144 +261,8 @@ class ResultCekData extends StatelessWidget {
               // ==========================
               // FOTO KENDARAAN
               // ==========================
-              const Gap(10),
-              BoxContainer(
-                padding: const EdgeInsets.all(10),
-                radius: 5,
-                showBorder: true,
-                borderColor: Colors.grey.shade200,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    RichText(
-                      text: const TextSpan(
-                        text: 'Dokumentasi Foto Terakhir Kendaraan ',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: MySizes.fontSizeMd,
-                            color: Colors.black),
-                        children: [
-                          TextSpan(
-                            text: '*',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, color: Colors.red),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Gap(10),
-                    Row(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * .43,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: controller.resultData.value.imgDepan ==
-                                          null ||
-                                      controller.resultData.value.imgDepan == ""
-                                  ? const AssetImage(
-                                      'assets/images/no_image.png')
-                                  : MemoryImage(
-                                      const Base64Decoder().convert(controller
-                                          .resultData.value.imgDepan!),
-                                    ),
-                              fit: controller.resultData.value.imgDepan ==
-                                          null ||
-                                      controller.resultData.value.imgDepan == ""
-                                  ? BoxFit.fitHeight
-                                  : BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * .43,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: controller.resultData.value.imgBelakang ==
-                                          null ||
-                                      controller.resultData.value.imgBelakang ==
-                                          ""
-                                  ? const AssetImage(
-                                      'assets/images/no_image.png')
-                                  : MemoryImage(
-                                      const Base64Decoder().convert(controller
-                                          .resultData.value.imgBelakang!),
-                                    ),
-                              fit: controller.resultData.value.imgBelakang ==
-                                          null ||
-                                      controller.resultData.value.imgBelakang ==
-                                          ""
-                                  ? BoxFit.fitHeight
-                                  : BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Gap(20),
-                    Row(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width * .43,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: controller.resultData.value.imgKanan ==
-                                          null ||
-                                      controller.resultData.value.imgKanan == ""
-                                  ? const AssetImage(
-                                      'assets/images/no_image.png')
-                                  : MemoryImage(
-                                      const Base64Decoder().convert(controller
-                                          .resultData.value.imgKanan!),
-                                    ),
-                              fit: controller.resultData.value.imgKanan ==
-                                          null ||
-                                      controller.resultData.value.imgKanan == ""
-                                  ? BoxFit.fitHeight
-                                  : BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width * .43,
-                          height: 100,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            image: DecorationImage(
-                              image: controller.resultData.value.imgKiri ==
-                                          null ||
-                                      controller.resultData.value.imgKiri == ""
-                                  ? const AssetImage(
-                                      'assets/images/no_image.png')
-                                  : MemoryImage(
-                                      const Base64Decoder().convert(
-                                          controller.resultData.value.imgKiri!),
-                                    ),
-                              fit: controller.resultData.value.imgKiri ==
-                                          null ||
-                                      controller.resultData.value.imgKiri == ""
-                                  ? BoxFit.fitHeight
-                                  : BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+              // const Gap(10),
+              // FotoKendaraan(controller: controller),
             ],
           ),
         );

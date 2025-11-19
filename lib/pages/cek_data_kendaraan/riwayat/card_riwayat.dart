@@ -23,11 +23,20 @@ class CardRiwayat extends StatelessWidget {
     return Obx(
       () => InkWell(
         onTap: () {
-          // detailPersyaratanController.persyaratanHeader.value =
-          //     jenisUjiController.jenisUjiItem[index].nama!;
-          detailRiwayatController
-              .getDetailDataKendaraan(controller.resultData[index].idHasilUji!);
-          Get.toNamed('/detailriwayat');
+          final id = controller.resultData[index].idHasilUji;
+
+          // Cek jika idHasilUji TIDAK dalam list (3, 5, 6)
+          if (id != null && ![3, 5, 6].contains(id)) {
+            detailRiwayatController.getDetailDataKendaraan(id);
+            Get.toNamed('/detailriwayat');
+          } else {
+            Get.snackbar(
+              'Info',
+              'Data tidak dapat dibuka.',
+              snackPosition: SnackPosition.BOTTOM,
+              icon: const Icon(Icons.info),
+            );
+          }
         },
         child: BoxContainer(
           margin: const EdgeInsets.only(bottom: 10),
@@ -42,12 +51,13 @@ class CardRiwayat extends StatelessWidget {
               Align(
                 alignment: Alignment.topLeft,
                 child: Container(
-                  width: 120,
-                  height: 30,
+                  width: 100,
+                  height: 20,
                   decoration: BoxDecoration(
-                    color: controller.resultData[index].statusLulus == 'LULUS'
-                        ? MyColors.primary
-                        : MyColors.red,
+                    color: controller.resultData[index].statusLulus ==
+                            'TIDAK LULUS'
+                        ? MyColors.red
+                        : MyColors.primary,
                     borderRadius: const BorderRadius.only(
                       bottomRight: Radius.circular(30),
                       topLeft: Radius.circular(5),
@@ -58,7 +68,7 @@ class CardRiwayat extends StatelessWidget {
                       controller.resultData[index].statusLulus!,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                        fontSize: MySizes.fontSizeXsm,
                       ),
                     ),
                   ),
@@ -69,25 +79,29 @@ class CardRiwayat extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
                     children: [
-                      Container(
-                        padding: const EdgeInsets.only(top: 35),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            controller.resultData[index].nmUji ?? '-',
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: MySizes.fontSizeLg),
+                          ),
+                          if ([3, 5]
+                              .contains(controller.resultData[index].idUji))
                             Text(
-                              controller.resultData[index].nmUji!,
+                              controller.resultData[index].catatan ?? '-',
                               style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: MySizes.fontSizeLg),
+                                color: Colors.grey,
+                                fontSize: MySizes.fontSizeSm,
+                              ),
                             ),
-                            Text(
-                              controller.resultData[index].nmPenguji ?? '-',
-                            ),
-                            Text(
-                              controller.resultData[index].tglUji!,
-                            ),
-                          ],
-                        ),
+                          Text(
+                            controller.resultData[index].tglUji!,
+                          ),
+                        ],
                       ),
                       const Spacer(),
                       const Icon(

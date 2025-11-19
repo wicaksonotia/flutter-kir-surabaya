@@ -33,19 +33,22 @@ class DataRiwayat {
   String? tglUji;
   String? tglmati;
   String? nmUji;
-  String? statusLulus;
-  String? nmPenguji;
+  int? idUji;
   int? idHasilUji;
+  String? catatan;
+  String? statusLulus;
 
-  DataRiwayat(
-      {this.noUji,
-      this.noKendaraan,
-      this.tglUji,
-      this.tglmati,
-      this.nmUji,
-      this.statusLulus,
-      this.nmPenguji,
-      this.idHasilUji});
+  DataRiwayat({
+    this.noUji,
+    this.noKendaraan,
+    this.tglUji,
+    this.tglmati,
+    this.nmUji,
+    this.idUji,
+    this.idHasilUji,
+    this.catatan,
+    this.statusLulus,
+  });
 
   DataRiwayat.fromJson(Map<String, dynamic> json) {
     noUji = json['no_uji'];
@@ -53,9 +56,10 @@ class DataRiwayat {
     tglUji = json['tgl_uji'];
     tglmati = json['tglmati'];
     nmUji = json['nm_uji'];
-    statusLulus = json['status_lulus'];
-    nmPenguji = json['nm_penguji'];
+    idUji = json['id_uji'];
     idHasilUji = json['id_hasil_uji'];
+    catatan = json['catatan'];
+    statusLulus = json['status_lulus'];
   }
 
   Map<String, dynamic> toJson() {
@@ -65,9 +69,10 @@ class DataRiwayat {
     data['tgl_uji'] = tglUji;
     data['tglmati'] = tglmati;
     data['nm_uji'] = nmUji;
-    data['status_lulus'] = statusLulus;
-    data['nm_penguji'] = nmPenguji;
+    data['id_uji'] = idUji;
     data['id_hasil_uji'] = idHasilUji;
+    data['catatan'] = catatan;
+    data['status_lulus'] = statusLulus;
     return data;
   }
 }

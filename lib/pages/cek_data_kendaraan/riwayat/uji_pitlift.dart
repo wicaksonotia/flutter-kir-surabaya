@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:surabaya/controllers/detail_riwayat_controller.dart';
 import 'package:surabaya/pages/cek_data_kendaraan/text_left.dart';
-import 'package:surabaya/pages/cek_data_kendaraan/text_right.dart';
 
 class Pitlift extends StatelessWidget {
   const Pitlift({
@@ -29,9 +28,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Rangka dan Landasan'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -42,9 +42,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Kemudi'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -55,9 +56,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Suspensi'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -68,9 +70,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Rem'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -81,9 +84,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Mesin'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -94,9 +98,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Penerus Daya'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -107,9 +112,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Pembuangan'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -120,9 +126,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Bahan Bakar'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
         Row(
@@ -133,9 +140,10 @@ class Pitlift extends StatelessWidget {
             ),
             TextLeft(nama: 'Sistem Pendingin'),
             Spacer(),
-            TextRight(
-              nama: 'LULUS',
-            )
+            Icon(
+              Icons.check,
+              color: Colors.lightGreen,
+            ),
           ],
         ),
       ],

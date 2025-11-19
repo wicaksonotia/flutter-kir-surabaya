@@ -23,7 +23,7 @@ class Info extends StatelessWidget {
             ),
           )
         : SizedBox(
-            height: 120,
+            height: 130,
             // width: MediaQuery.of(context).size.width,
             child: ListView(
               padding: const EdgeInsets.all(8),
@@ -106,9 +106,7 @@ class Info extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const Gap(10),
                 // UJI BERKALA
                 BoxContainer(
                   radius: 7,
@@ -186,9 +184,7 @@ class Info extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const Gap(10),
                 // NUMPANG UJI MASUK
                 BoxContainer(
                   radius: 7,
@@ -266,9 +262,7 @@ class Info extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  width: 10,
-                ),
+                const Gap(10),
                 // MUTASI MASUk
                 BoxContainer(
                   radius: 7,

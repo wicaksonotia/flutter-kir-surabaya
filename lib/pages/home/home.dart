@@ -8,22 +8,33 @@ import 'package:surabaya/controllers/uji_hari_ini_controller.dart';
 import 'package:surabaya/pages/home/berita.dart';
 import 'package:surabaya/pages/home/info.dart';
 import 'package:surabaya/pages/home/see_all_container.dart';
-import 'package:surabaya/pages/home/thumbnail_berita.dart';
 import 'package:surabaya/utils/colors.dart';
 import 'package:surabaya/pages/home/menu.dart';
 import 'package:surabaya/utils/containers/box_container.dart';
 import 'package:surabaya/pages/home/carousel.dart';
 import 'package:surabaya/utils/sizes.dart';
 
-// ignore: must_be_immutable
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   LoginController loginController = Get.find<LoginController>();
   final UjiHariIniController ujiHariIniController =
       Get.put(UjiHariIniController());
   final BeritaController beritaController = Get.put(BeritaController());
   final CarouselBannerController carouselController =
       Get.put(CarouselBannerController());
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    beritaController.fetchData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +109,7 @@ class HomePage extends StatelessWidget {
                                   children: [
                                     Image(
                                       image: AssetImage(
-                                          'assets/images/logo_dishub_sampang.png'),
+                                          'assets/images/logo_dishub.png'),
                                       width: 50,
                                       height: 50,
                                     ),
@@ -110,7 +121,7 @@ class HomePage extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'KIR',
+                                          'Pengujian Kendaraan Bermotor',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -118,7 +129,7 @@ class HomePage extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          'Dishub Kabupaten Sampang',
+                                          'Dishub Surabaya',
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: MySizes.fontSizeMd,
@@ -175,9 +186,8 @@ class HomePage extends StatelessWidget {
                             child: BoxContainer(
                               margin:
                                   const EdgeInsets.only(right: 10, bottom: 10),
-                              padding: const EdgeInsets.all(10),
                               width: MediaQuery.of(context).size.width * .85,
-                              height: 170,
+                              height: 130,
                               shadow: true,
                               radius: 7,
                               child: Menu(),

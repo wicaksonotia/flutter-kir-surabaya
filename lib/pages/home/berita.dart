@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
 import 'package:flutter/material.dart';
@@ -11,6 +9,7 @@ import 'package:surabaya/controllers/berita_controller.dart';
 import 'package:surabaya/utils/colors.dart';
 import 'package:surabaya/utils/containers/box_container.dart';
 import 'package:surabaya/utils/sizes.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Berita extends StatefulWidget {
   Berita({
@@ -25,6 +24,43 @@ class Berita extends StatefulWidget {
 }
 
 class _BeritaState extends State<Berita> {
+  // Method to launch a URL
+  Future<void> _launchURL(String url) async {
+    try {
+      final Uri uri = Uri.parse(url);
+      String? videoId;
+
+      // Ambil video ID dari URL
+      if (uri.host.contains('youtu.be')) {
+        videoId = uri.pathSegments.first;
+      } else if (uri.host.contains('youtube.com')) {
+        videoId = uri.queryParameters['v'];
+      }
+
+      // 🔹 Kalau ada videoId, coba buka dengan intent ke YouTube app
+      if (videoId != null) {
+        final youtubeAppUri = Uri.parse('vnd.youtube:$videoId');
+        if (await canLaunchUrl(youtubeAppUri)) {
+          await launchUrl(youtubeAppUri, mode: LaunchMode.externalApplication);
+          return;
+        }
+      }
+
+      // 🔹 Fallback ke browser kalau YouTube app tidak tersedia
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri, mode: LaunchMode.externalApplication);
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Tidak bisa membuka link YouTube')),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Gagal membuka YouTube: $e')),
+      );
+    }
+  }
+
   // Ambil ID video dari YouTube
   String? _getYoutubeId(String url) {
     try {
@@ -90,20 +126,20 @@ class _BeritaState extends State<Berita> {
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
                 // childAspectRatio: (1 / 1.3),
-                mainAxisExtent: 220,
+                mainAxisExtent: 250,
               ),
               itemBuilder: (_, index) {
                 var dataJudul =
                     widget.beritaController.resultData[index].judul!;
-                var dataBerita =
-                    widget.beritaController.resultData[index].berita!;
+                // var dataBerita =
+                //     widget.beritaController.resultData[index].berita!;
                 var dataTanggal = DateTime.tryParse(
                     widget.beritaController.resultData[index].tanggal!);
-                Uint8List decodePhoto;
-                if (widget.beritaController.resultData[index].gambar != null) {
-                  decodePhoto = const Base64Decoder().convert(
-                      widget.beritaController.resultData[index].gambar!);
-                }
+                // Uint8List decodePhoto;
+                // if (widget.beritaController.resultData[index].gambar != null) {
+                //   decodePhoto = const Base64Decoder().convert(
+                //       widget.beritaController.resultData[index].gambar!);
+                // }
 
                 return FutureBuilder<Map<String, String>>(
                   future: _getYoutubeData(dataJudul),
@@ -119,28 +155,36 @@ class _BeritaState extends State<Berita> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // THUMBNAIL PRODUCT
+                              // THUMBNAIL BERITA
                               Center(
-                                child: Container(
-                                  margin: const EdgeInsets.only(right: 5),
-                                  width: MediaQuery.of(context).size.width,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(7),
-                                    image: snapshot.connectionState ==
-                                                ConnectionState.done &&
-                                            thumbnailUrl != null
-                                        ? DecorationImage(
-                                            image: NetworkImage(thumbnailUrl),
-                                            fit: BoxFit.cover,
-                                          )
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (dataJudul.contains('youtube.com') ||
+                                        dataJudul.contains('youtu.be')) {
+                                      _launchURL(dataJudul);
+                                    }
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.only(right: 5),
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(7),
+                                      image: snapshot.connectionState ==
+                                                  ConnectionState.done &&
+                                              thumbnailUrl != null
+                                          ? DecorationImage(
+                                              image: NetworkImage(thumbnailUrl),
+                                              fit: BoxFit.cover,
+                                            )
+                                          : null,
+                                    ),
+                                    child: snapshot.connectionState !=
+                                            ConnectionState.done
+                                        ? const Center(
+                                            child: CircularProgressIndicator())
                                         : null,
                                   ),
-                                  child: snapshot.connectionState !=
-                                          ConnectionState.done
-                                      ? const Center(
-                                          child: CircularProgressIndicator())
-                                      : null,
                                 ),
                               ),
                               const Gap(10),
@@ -166,18 +210,8 @@ class _BeritaState extends State<Berita> {
                               Text(
                                 title ?? 'video',
                                 style: const TextStyle(
-                                    fontSize: MySizes.fontSizeMd,
-                                    fontWeight: FontWeight.bold),
+                                    fontSize: MySizes.fontSizeSm),
                               ),
-                              // const Gap(10),
-                              // Text(
-                              //   dataBerita,
-                              //   style: const TextStyle(
-                              //       fontSize: MySizes.fontSizeSm,
-                              //       color: Colors.black54),
-                              //   maxLines: 3,
-                              //   overflow: TextOverflow.ellipsis,
-                              // ),
                             ],
                           ),
                         ],
